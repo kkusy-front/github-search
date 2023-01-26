@@ -1,37 +1,19 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './main.scss';
 
-import './app.scss';
-
-import Footer from './compontents/footer/Footer';
-import Header from './compontents/header/Header';
-import Github from './features/github/Github';
-import Silnia from './features/silnia/Silnia';
+import Footer from './compontents/Footer';
+import Header from './compontents/Header';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Github />,
-      children: [
-        {
-          path: 'github',
-          element: <Github />,
-        },
-        {
-          path: 'silnia',
-          element: <Silnia />,
-        },
-      ],
-    },
-  ]);
-
   return (
     <div className='App'>
       <Header />
       <main className='main-content'>
-        <RouterProvider router={router} />
+        <div className='main-content__outlet'>
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>

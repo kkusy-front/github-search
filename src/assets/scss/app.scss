@@ -1,0 +1,19 @@
+.App {
+  background: #f6f6f5;
+}
+
+.main-content {
+  min-height: calc(100vh - 250px);
+  background: #f6f6f5;
+
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+
+  &__outlet {
+    background: #fff;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    width: 100%;
+  }
+}
