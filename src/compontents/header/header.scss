@@ -1,0 +1,32 @@
+.header {
+  background-color: #fff;
+
+  box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.75);
+
+  .main-nav {
+    &__menu {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+
+      &-item {
+        padding: 20px 5px;
+        margin: 0;
+
+        &-link {
+          color: #000;
+          text-decoration: none;
+          font-size: 1.5rem;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
