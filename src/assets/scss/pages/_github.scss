@@ -1,11 +1,16 @@
+@use '../abstract/mixins';
 @use '../components/button' as btn;
 @use '../components/inputField' as input;
-@use '../abstract/mixins';
+.github {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-.factorial {
   &__form {
     margin: 1rem 0;
+    margin-bottom: 3rem;
     display: flex;
+    justify-content: center;
 
     &-input {
       @include input.input;

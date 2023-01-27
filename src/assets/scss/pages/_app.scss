@@ -12,13 +12,17 @@
 
     display: flex;
     justify-content: center;
-    margin: 2rem 1rem;
+    margin: 2rem auto;
     max-width: 1200px;
 
     &__outlet {
       background: #fff;
       padding: 2rem 1rem;
       width: 100%;
+    }
+
+    @include mixins.respond(phone) {
+      margin: 2rem 1rem;
     }
   }
 }
