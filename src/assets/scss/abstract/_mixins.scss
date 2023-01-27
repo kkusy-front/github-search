@@ -1,75 +1,36 @@
 /*Media query mixin*/
-@mixin respond($breakpoints){
-    @if $breakpoints == phone{
-        @media (max-width: 37.5em) { //600px
-            @content
-        }
+@mixin respond($breakpoints) {
+  @if $breakpoints == phone {
+    @media (max-width: 37.5em) {
+      //600px
+      @content;
     }
-    @if $breakpoints == tab-port{
-        @media screen and (max-width: 56.25rem) { //900px
-            @content
-        }
+  }
+  @if $breakpoints == tab-port {
+    @media screen and (max-width: 56.25rem) {
+      //900px
+      @content;
     }
-    @if $breakpoints == tab-land{
-        @media (max-width: 75em) { //1200px
-            @content
-        }
+  }
+  @if $breakpoints == tab-land {
+    @media (max-width: 75em) {
+      //1200px
+      @content;
     }
-    @if $breakpoints == big-desktop{
-        @media (min-width: 112.5em) { //1800+
-            @content
-        }
+  }
+  @if $breakpoints == big-desktop {
+    @media (min-width: 112.5em) {
+      //1800+
+      @content;
     }
+  }
 }
 
-/*
-Use for pseudo code
-*/
-@mixin pseudo($display: block, $pos: absolute, $content: ''){
-    content: $content;
-    display: $display;
-    position: $pos;
-}
-
-/*Uses for keyframe*/
-@mixin keyframes($animation-name) {
-    @-webkit-keyframes #{$animation-name} {
-        @content;
-    }
-    @-moz-keyframes #{$animation-name} {
-        @content;
-    }
-    @-ms-keyframes #{$animation-name} {
-        @content;
-    }
-    @-o-keyframes #{$animation-name} {
-        @content;
-    }
-    @keyframes #{$animation-name} {
-        @content;
-    }
-}
-
-/*Uses for animation*/
-@mixin animation($str) {
-    -webkit-animation: #{$str};
-    -moz-animation: #{$str};
-    -o-animation: #{$str};
-    animation: #{$str};
-}
-/*CSS PREFIX*/
-@mixin css3-prefix($prop, $value) {
-    -webkit-#{$prop}: #{$value};
-    -moz-#{$prop}: #{$value};
-    -ms-#{$prop}: #{$value};
-    -o-#{$prop}: #{$value};
-    #{$prop}: #{$value};
-}
 /*Center content vertically*/
 @mixin vertical-center {
-    position: relative;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }

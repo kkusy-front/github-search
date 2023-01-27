@@ -1,5 +1,6 @@
 @use '../components/button' as btn;
 @use '../components/inputField' as input;
+@use '../abstract/mixins';
 
 .factorial {
   &__form {
@@ -13,6 +14,14 @@
     &-btn {
       @include btn.button;
       margin: 0 10px;
+    }
+
+    @include mixins.respond(phone) {
+      flex-direction: column;
+      &-btn {
+        @include btn.button;
+        margin: 10px;
+      }
     }
   }
 }

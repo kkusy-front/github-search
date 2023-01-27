@@ -1,19 +1,24 @@
+@use '../abstract/mixins';
+
 .App {
   background: $gray-color;
-}
 
-.main-content {
-  min-height: calc(100vh - 250px);
-  background: $gray-color;
+  .main-content {
+    min-height: calc(100vh - 250px);
+    background: $gray-color;
+    box-shadow: 1px 1px 17px 1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 1px 17px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 17px 1px rgba(0, 0, 0, 0.75);
 
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-
-  &__outlet {
-    background: #fff;
-    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 1rem;
     max-width: 1200px;
-    width: 100%;
+
+    &__outlet {
+      background: #fff;
+      padding: 2rem 1rem;
+      width: 100%;
+    }
   }
 }

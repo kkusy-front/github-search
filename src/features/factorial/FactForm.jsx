@@ -36,6 +36,7 @@ const FactForm = () => {
           className='factorial__form-input'
           value={value}
           onChange={(e) => onChange(e)}
+          placeholder='Wpisz silnie do obliczenia'
         />
         <button type='submit' className='factorial__form-btn'>
           Oblicz
