@@ -5,6 +5,8 @@ import './main.scss';
 
 import Footer from './compontents/Footer';
 import Header from './compontents/Header';
+// import Github from './features/github/Github';
+// import Factorial from './features/factorial/Factorial';
 
 function App() {
   return (
