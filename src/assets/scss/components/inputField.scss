@@ -1,0 +1,18 @@
+@mixin input {
+  padding: 5px 15px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+
+  &:hover {
+    background: #f6f6f5;
+  }
+
+  &:focus {
+    background: #f6f6f5;
+  }
+
+  &:active {
+    background: #f6f6f5;
+  }
+}

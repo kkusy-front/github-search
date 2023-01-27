@@ -10,7 +10,7 @@ const Factorial = () => {
   const factorials = useSelector(getFactorials);
 
   return (
-    <div>
+    <div className='factorial'>
       <FactForm />
       <FactTable facts={factorials} />
     </div>

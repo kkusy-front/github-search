@@ -1,10 +1,10 @@
 .App {
-  background: #f6f6f5;
+  background: $gray-color;
 }
 
 .main-content {
   min-height: calc(100vh - 250px);
-  background: #f6f6f5;
+  background: $gray-color;
 
   display: flex;
   justify-content: center;

@@ -33,7 +33,7 @@ root.render(
   <Provider store={store}>
     <HashRouter>
       <Routes>
-        <Route path='/' element={<App />}>
+        <Route exatc path='/' element={<App />}>
           <Route path='github' element={<Github />} />
           <Route path='factorial' element={<Factorial />} />
         </Route>

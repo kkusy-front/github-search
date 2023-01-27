@@ -1,20 +1,26 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Alert from '../../compontents/Alert';
 import { calculate } from './factorialSlice';
 
 const FactForm = () => {
   const [value, setValue] = useState('');
+  const [error, setError] = useState(false);
 
   const dispatch = useDispatch();
 
   const letCalculate = () => {
-    dispatch(calculate(value));
+    !value ? setError(true) : dispatch(calculate(value));
   };
 
-  const onChange = useCallback((e) => {
+  const onChange = (e) => {
     const result = e.target.value.replace(/\D/g, '');
     setValue(result);
-  }, []);
+  };
+
+  const handleClose = () => {
+    setError(false);
+  };
 
   return (
     <>
@@ -23,10 +29,19 @@ const FactForm = () => {
           e.preventDefault();
           letCalculate();
         }}
+        className='factorial__form'
       >
-        <input type='text' value={value} onChange={(e) => onChange(e)} />
-        <button type='submit'>Oblicz</button>
+        <input
+          type='text'
+          className='factorial__form-input'
+          value={value}
+          onChange={(e) => onChange(e)}
+        />
+        <button type='submit' className='factorial__form-btn'>
+          Oblicz
+        </button>
       </form>
+      {error ? <Alert status='error' text='Zła wartość silni.' handleClose={handleClose} /> : null}
     </>
   );
 };

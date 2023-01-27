@@ -1,0 +1,18 @@
+@use '../components/button' as btn;
+@use '../components/inputField' as input;
+
+.factorial {
+  &__form {
+    margin: 1rem 0;
+    display: flex;
+
+    &-input {
+      @include input.input;
+    }
+
+    &-btn {
+      @include btn.button;
+      margin: 0 10px;
+    }
+  }
+}
