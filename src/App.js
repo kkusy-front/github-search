@@ -6,8 +6,11 @@ import './assets/scss/main.scss';
 import Footer from './compontents/Footer';
 import Header from './compontents/Header';
 import Github from './features/github/Github';
-// import Github from './features/github/Github';
-// import Factorial from './features/factorial/Factorial';
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 function App() {
   const outlet = useOutlet();

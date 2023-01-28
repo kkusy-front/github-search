@@ -1,13 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import getUser from './githubAPI';
+import getRepo, { getCommits } from './githubAPI';
 
 const initialState = {
-  success: null,
-  error: null,
-  user: null,
-  repo: null,
-  commits: null,
-  loading: false,
+  repo: {
+    success: null,
+    error: null,
+    loading: false,
+    data: [],
+  },
+  commits: {
+    success: null,
+    error: null,
+    loading: false,
+    data: [],
+  },
 };
 
 export const githubSlice = createSlice({
@@ -15,23 +21,38 @@ export const githubSlice = createSlice({
   initialState,
   reducers: {
     closeAlert: (state) => {
-      state.error = null;
+      state.repo.error = null;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getUser.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+      .addCase(getRepo.pending, (state) => {
+        state.repo.loading = true;
+        state.repo.error = null;
       })
-      .addCase(getUser.fulfilled, (state) => {
-        state.loading = false;
-        state.success = true;
+      .addCase(getRepo.fulfilled, (state, action) => {
+        state.repo.loading = false;
+        state.repo.success = true;
+        state.repo.data = action.payload.data;
       })
-      .addCase(getUser.rejected, (state, action) => {
-        state.loading = false;
-        state.success = false;
-        state.error = action.payload;
+      .addCase(getRepo.rejected, (state, action) => {
+        state.repo.loading = false;
+        state.repo.success = false;
+        state.repo.error = action.payload;
+      })
+      .addCase(getCommits.pending, (state) => {
+        state.commits.loading = true;
+        state.commits.error = null;
+      })
+      .addCase(getCommits.fulfilled, (state, action) => {
+        state.commits.loading = false;
+        state.commits.success = true;
+        state.commits.data = action.payload.data;
+      })
+      .addCase(getCommits.rejected, (state, action) => {
+        state.commits.loading = false;
+        state.commits.success = false;
+        state.commits.error = action.payload;
       });
   },
 });
@@ -39,6 +60,6 @@ export const githubSlice = createSlice({
 // eslint-disable-next-line no-empty-pattern
 export const { closeAlert } = githubSlice.actions;
 
-export const getUserData = (state) => state.github;
+export const getUserRepos = (state) => state.github.repo;
 
 export default githubSlice.reducer;

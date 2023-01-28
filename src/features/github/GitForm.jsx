@@ -2,19 +2,25 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../../compontents/Alert';
 
-import getUser from './githubAPI';
-import { closeAlert, getUserData } from './githubSlice';
+import getRepo from './githubAPI';
+import { closeAlert, getUserRepos } from './githubSlice';
+
+import githubUsernameRegex from 'github-username-regex';
 
 const GitForm = () => {
   const dispatch = useDispatch();
-  const { error, loading } = useSelector(getUserData);
+  const { error, loading } = useSelector(getUserRepos);
   const [login, setLogin] = useState('');
   const [errorInput, setError] = useState(false);
 
   // const dispatch = useDispatch();
 
   const fetchUser = () => {
-    !login ? setError(true) : dispatch(getUser({ login }));
+    githubUsernameRegex.test(login)
+      ? !login
+        ? setError(true)
+        : dispatch(getRepo({ login }))
+      : setError(true);
   };
 
   const onChange = (e) => {
@@ -28,7 +34,7 @@ const GitForm = () => {
   return (
     <>
       {errorInput ? (
-        <Alert status='error' text='Pole login nie może być puste' handleClose={handleClose} />
+        <Alert status='error' text='Sprawdź poprawność danych' handleClose={handleClose} />
       ) : null}
       {error ? (
         <Alert
