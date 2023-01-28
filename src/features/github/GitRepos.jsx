@@ -12,6 +12,7 @@ const GitRepos = () => {
         {repos.data.map((repo) => (
           <GitRepo
             key={repo.id}
+            id={repo.id}
             title={repo.name}
             desc={repo.description}
             lang={repo.language}

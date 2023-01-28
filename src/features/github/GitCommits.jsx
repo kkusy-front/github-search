@@ -1,36 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-import { MdArrowRight, MdArrowDropDown } from 'react-icons/md';
 import { ImSpinner } from 'react-icons/im';
-import { useDispatch, useSelector } from 'react-redux';
+import { MdArrowDropDown, MdArrowRight } from 'react-icons/md';
+
+import { useDispatch } from 'react-redux';
 import { getCommits } from './githubAPI';
-import { getUserCommits } from './githubSlice';
 
 const GitCommits = ({ title, user }) => {
-  const { loading } = useSelector(getUserCommits);
-
+  const [data, setData] = useState([]);
   const [open, setOpen] = useState(false);
-  const [loader, setLoader] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setLoader(loading);
-    return () => {
-      setLoader(false);
-    };
-  }, [loading]);
-
   const handleOpen = () => {
     setOpen(!open);
-    if (!open) dispatch(getCommits({ user, title }));
+    if (!open) {
+      setLoading(true);
+      dispatch(getCommits({ user, title }))
+        .then((res) => {
+          return res.payload.data;
+        })
+        .then((res) => {
+          setData(res);
+          setLoading(false);
+        });
+    }
   };
   return (
     <>
-      <button onClick={handleOpen} tabIndex='0' aria-label={`Pokaż commity dla ${title}`}>
-        <span>Commits</span>{' '}
-        {loader ? <ImSpinner className='loader' /> : open ? <MdArrowDropDown /> : <MdArrowRight />}
-      </button>
+      <div>
+        <button tabIndex='0' aria-label={`Pokaż commity dla ${title}`} onClick={handleOpen}>
+          <span>Commits</span>
+          {open ? <MdArrowDropDown /> : <MdArrowRight />}
+        </button>
+      </div>
+      <div className=''>
+        {open ? (
+          loading ? (
+            <ImSpinner className='loader' />
+          ) : (
+            data.map((commit, index) => (
+              <div className='github__repos-repo-commits-commit' key={index}>
+                <div className='github__repos-repo-commits-commit-title'>
+                  {commit.commit.message}
+                </div>
+                <div className='github__repos-repo-commits-commit-link'>
+                  <a href={commit.html_url} target='_blank' rel='noreferrer'>
+                    Przejdź do commita
+                  </a>
+                </div>
+              </div>
+            ))
+          )
+        ) : null}
+      </div>
     </>
   );
 };

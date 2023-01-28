@@ -3,8 +3,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const backendURL = 'https://api.github.com';
 
-export const getRepo = createAsyncThunk(
-  'github/getRepo',
+export const fetchRepos = createAsyncThunk(
+  'github/fetchRepos',
   async ({ login }, { rejectWithValue }) => {
     try {
       const config = {
@@ -52,5 +52,3 @@ export const getCommits = createAsyncThunk(
     }
   },
 );
-
-export default getRepo;

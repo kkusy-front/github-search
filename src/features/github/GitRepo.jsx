@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GitCommits from './GitCommits';
 
-const GitRepo = ({ title, desc, lang, date, autor }) => {
+const GitRepo = ({ id, title, desc, lang, date, autor }) => {
+  const [activeComm, setActiveComm] = useState(null);
+
+  const handleChange = (e) => {
+    setActiveComm(e);
+  };
   return (
     <>
       <article className='github__repos-repo'>
@@ -11,7 +16,13 @@ const GitRepo = ({ title, desc, lang, date, autor }) => {
           {lang ? lang : 'Język nie został zarejestrowany'}
         </div>
         <div className='github__repos-repo-commits'>
-          <GitCommits title={title} user={autor} />
+          <GitCommits
+            title={title}
+            user={autor}
+            active={activeComm}
+            handleChange={handleChange}
+            id={id}
+          />
         </div>
         <div className='github__repos-repo-footer'>
           <div className='github__repos-repo-footer-autor'>@{autor}</div>

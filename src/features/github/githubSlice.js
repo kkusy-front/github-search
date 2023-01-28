@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import getRepo, { getCommits } from './githubAPI';
+import { fetchRepos, getCommits } from './githubAPI';
 
 const initialState = {
   repo: {
@@ -23,19 +23,22 @@ export const githubSlice = createSlice({
     closeAlert: (state) => {
       state.repo.error = null;
     },
+    clearState: (state) => {
+      state.repo.data = [];
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getRepo.pending, (state) => {
+      .addCase(fetchRepos.pending, (state) => {
         state.repo.loading = true;
         state.repo.error = null;
       })
-      .addCase(getRepo.fulfilled, (state, action) => {
+      .addCase(fetchRepos.fulfilled, (state, action) => {
         state.repo.loading = false;
         state.repo.success = true;
         state.repo.data = action.payload.data;
       })
-      .addCase(getRepo.rejected, (state, action) => {
+      .addCase(fetchRepos.rejected, (state, action) => {
         state.repo.loading = false;
         state.repo.success = false;
         state.repo.error = action.payload;
@@ -58,7 +61,7 @@ export const githubSlice = createSlice({
 });
 
 // eslint-disable-next-line no-empty-pattern
-export const { closeAlert } = githubSlice.actions;
+export const { closeAlert, clearState } = githubSlice.actions;
 
 export const getUserRepos = (state) => state.github.repo;
 export const getUserCommits = (state) => state.github.commits;

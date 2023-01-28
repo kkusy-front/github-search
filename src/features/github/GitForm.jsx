@@ -5,10 +5,10 @@ import Alert from '../../compontents/Alert';
 import { ImSpinner } from 'react-icons/im';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import getRepo from './githubAPI';
-import { closeAlert, getUserRepos } from './githubSlice';
+import { clearState, closeAlert, getUserRepos } from './githubSlice';
 
 import githubUsernameRegex from 'github-username-regex';
+import { fetchRepos } from './githubAPI';
 
 const GitForm = () => {
   const dispatch = useDispatch();
@@ -23,15 +23,17 @@ const GitForm = () => {
     githubUsernameRegex.test(login)
       ? !login
         ? setError(true)
-        : dispatch(getRepo({ login }))
+        : dispatch(fetchRepos({ login }))
       : setError(true);
   };
 
   const onChange = (e) => {
     setLogin(e.target.value);
   };
+
   const handleResetInput = () => {
     setLogin('');
+    dispatch(clearState());
     inputRef.current?.focus();
   };
 
