@@ -90,8 +90,12 @@
 
         &-commit {
           font-weight: 400;
-          margin: 1rem 0;
+          padding: 1rem;
           word-wrap: break-word;
+
+          &:nth-child(even) {
+            background: $gray-dark-color;
+          }
         }
       }
 

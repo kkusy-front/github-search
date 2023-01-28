@@ -1,10 +1,6 @@
 import React from 'react';
 
-const FactTable = (el) => {
-  let { facts } = el;
-
-  console.log(facts);
-
+export const FactTable = ({ facts }) => {
   return (
     <div>
       <table id='rwd-table'>
@@ -28,5 +24,3 @@ const FactTable = (el) => {
     </div>
   );
 };
-
-export default FactTable;

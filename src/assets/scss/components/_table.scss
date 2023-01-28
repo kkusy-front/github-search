@@ -76,6 +76,7 @@ table {
       padding: 0.5em 0.5em 0.5em 50%;
       float: left;
       width: 100%;
+      word-break: break-word;
       &:before {
         width: 100%;
         display: block;

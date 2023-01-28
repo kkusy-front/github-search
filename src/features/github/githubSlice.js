@@ -7,6 +7,7 @@ const initialState = {
     error: null,
     loading: false,
     data: [],
+    login: null,
   },
   commits: {
     success: null,
