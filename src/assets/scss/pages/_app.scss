@@ -6,9 +6,7 @@
   .main-content {
     min-height: calc(100vh - 250px);
     background: $gray-color;
-    box-shadow: 1px 1px 17px 1px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 1px 1px 17px 1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 1px 1px 17px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
     display: flex;
     justify-content: center;
@@ -21,8 +19,8 @@
       width: 100%;
     }
 
-    @include mixins.respond(phone) {
-      margin: 2rem 1rem;
+    @include mixins.respond(tab-land) {
+      margin: 5rem 1rem;
     }
   }
 }
