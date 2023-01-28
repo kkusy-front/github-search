@@ -6,7 +6,6 @@ import GitRepo from './GitRepo';
 const GitRepos = () => {
   const repos = useSelector(getUserRepos);
 
-  console.log(repos.data);
   return (
     <>
       <section className='github__repos'>

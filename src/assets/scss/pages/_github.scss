@@ -12,8 +12,23 @@
     display: flex;
     justify-content: center;
 
-    &-input {
-      @include input.input;
+    &-group {
+      position: relative;
+
+      &-input {
+        @include input.input;
+      }
+
+      &-delete {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+        cursor: pointer;
+      }
     }
 
     &-btn {

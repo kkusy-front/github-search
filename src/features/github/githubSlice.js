@@ -61,5 +61,6 @@ export const githubSlice = createSlice({
 export const { closeAlert } = githubSlice.actions;
 
 export const getUserRepos = (state) => state.github.repo;
+export const getUserCommits = (state) => state.github.commits;
 
 export default githubSlice.reducer;

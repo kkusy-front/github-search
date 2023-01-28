@@ -8,6 +8,7 @@ import 'normalize.css';
 
 import Github from './features/github/Github';
 import Factorial from './features/factorial/Factorial';
+import Assumptions from './pages/assumptions/Assumptions';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -36,6 +37,7 @@ root.render(
         <Route exatc path='/' element={<App />}>
           <Route path='github' element={<Github />} />
           <Route path='factorial' element={<Factorial />} />
+          <Route path='assumptions' element={<Assumptions />} />
         </Route>
       </Routes>
     </HashRouter>

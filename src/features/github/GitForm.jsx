@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Alert from '../../compontents/Alert';
+
+import { ImSpinner } from 'react-icons/im';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import getRepo from './githubAPI';
 import { closeAlert, getUserRepos } from './githubSlice';
@@ -12,6 +15,7 @@ const GitForm = () => {
   const { error, loading } = useSelector(getUserRepos);
   const [login, setLogin] = useState('');
   const [errorInput, setError] = useState(false);
+  const inputRef = useRef(null);
 
   // const dispatch = useDispatch();
 
@@ -25,6 +29,10 @@ const GitForm = () => {
 
   const onChange = (e) => {
     setLogin(e.target.value);
+  };
+  const handleResetInput = () => {
+    setLogin('');
+    inputRef.current?.focus();
   };
 
   const handleClose = () => {
@@ -50,15 +58,25 @@ const GitForm = () => {
         }}
         className='github__form'
       >
-        <input
-          type='text'
-          className='github__form-input'
-          value={login}
-          onChange={(e) => onChange(e)}
-          placeholder='Login'
-        />
+        <div className='github__form-group'>
+          <input
+            ref={inputRef}
+            type='text'
+            className='github__form-group-input'
+            value={login}
+            onChange={(e) => onChange(e)}
+            placeholder='Login'
+          />
+          {login ? (
+            <span className='github__form-group-delete' onClick={handleResetInput}>
+              {' '}
+              <AiOutlineClose />
+            </span>
+          ) : null}
+        </div>
+
         <button type='submit' className='github__form-btn'>
-          Wyślij {loading ? 'ładuje...' : null}
+          Wyślij {loading ? <ImSpinner className='loader' /> : null}
         </button>
       </form>
     </>

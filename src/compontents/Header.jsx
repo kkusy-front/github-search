@@ -8,6 +8,16 @@ const Header = () => {
         <ul className='main-nav__menu'>
           <li className='main-nav__menu-item'>
             <NavLink
+              to='assumptions'
+              className={({ isActive }) =>
+                isActive ? 'main-nav__menu-item-link active' : 'main-nav__menu-item-link'
+              }
+            >
+              Założenia
+            </NavLink>
+          </li>
+          <li className='main-nav__menu-item'>
+            <NavLink
               to='github'
               className={({ isActive }) =>
                 isActive ? 'main-nav__menu-item-link active' : 'main-nav__menu-item-link'
