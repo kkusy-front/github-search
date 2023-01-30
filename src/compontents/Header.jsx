@@ -39,7 +39,7 @@ const Header = () => {
           <TbFaceId />
           rekturacja
         </div>
-        <ul className='main-nav__menu'>
+        <ul className='main-nav__menu' aria-hidden={showNavbar ? 'false' : 'true'}>
           <li className='main-nav__menu-item'>
             <NavLink
               to='assumptions'
@@ -72,11 +72,20 @@ const Header = () => {
           </li>
         </ul>
         <div className='main-nav__mobile' ref={navBarRef}>
-          <div className='main-nav__mobile-icon' onClick={handleShowNavbar}>
+          <button
+            aria-controls='main-menu'
+            aria-expanded={showNavbar ? 'true' : 'false'}
+            type='button'
+            className='main-nav__mobile-icon'
+            onClick={handleShowNavbar}
+          >
             {showNavbar ? <AiOutlineClose /> : <GiHamburgerMenu />}
-          </div>
+          </button>
 
-          <ul className={`main-nav__mobile-menu ${showNavbar ? 'active' : null}`}>
+          <ul
+            className={`main-nav__mobile-menu ${showNavbar ? 'active' : null}`}
+            aria-hidden={showNavbar ? 'false' : 'true'}
+          >
             <li className='main-nav__mobile-menu-item'>
               <NavLink
                 to='assumptions'
