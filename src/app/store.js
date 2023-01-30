@@ -1,12 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import factorialSlice from '../features/factorial/factorialSlice';
-import githubSlice from '../features/github/githubSlice';
+import rootReducer from './rootReducer';
 
 export const store = configureStore({
-  reducer: {
-    factorial: factorialSlice,
-    github: githubSlice,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

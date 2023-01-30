@@ -1,14 +1,24 @@
 @use '../abstract/mixins';
 .alert {
   min-height: 50px;
-  width: 100%;
   max-width: 300px;
+  width: 100%;
   border-radius: 5px;
   padding: 10px 16px 11px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 1rem 0;
+
+  &.alert-success {
+    background: #12c99b;
+  }
+  &.alert-error {
+    background: #e41749;
+  }
+  &.alert-warrning {
+    background: #ce9803;
+  }
 
   .info__wrapper {
     display: flex;
@@ -42,11 +52,4 @@
   @include mixins.respond(phone) {
     max-width: 100%;
   }
-}
-
-.alert-success {
-  background: #12c99b;
-}
-.alert-error {
-  background: #e41749;
 }

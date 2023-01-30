@@ -6,8 +6,7 @@ const initialState = {
     success: null,
     error: null,
     loading: false,
-    data: [],
-    login: null,
+    data: null,
   },
   commits: {
     success: null,
@@ -25,7 +24,7 @@ export const githubSlice = createSlice({
       state.repo.error = null;
     },
     clearState: (state) => {
-      state.repo.data = [];
+      state.repo.data = null;
     },
   },
   extraReducers: (builder) => {

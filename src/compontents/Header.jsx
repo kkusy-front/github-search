@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { TbFaceId } from 'react-icons/tb';
@@ -8,6 +8,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const { pathname } = useLocation();
+  const navBarRef = useRef();
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
@@ -18,6 +19,18 @@ const Header = () => {
       setShowNavbar(false);
     };
   }, [pathname]);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navBarRef.current && !navBarRef.current.contains(event.target)) {
+        setShowNavbar(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [navBarRef, setShowNavbar]);
 
   return (
     <header className='header'>
@@ -58,7 +71,7 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
-        <div className='main-nav__mobile'>
+        <div className='main-nav__mobile' ref={navBarRef}>
           <div className='main-nav__mobile-icon' onClick={handleShowNavbar}>
             {showNavbar ? <AiOutlineClose /> : <GiHamburgerMenu />}
           </div>

@@ -1,7 +1,8 @@
 @use '../abstract/mixins';
 
 .header {
-  background-color: #fff;
+  background-color: $primary-color;
+  color: #fff;
 
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
@@ -22,6 +23,7 @@
 
       @include mixins.respond(tab-port) {
         font-size: 2rem;
+        padding: 1rem;
       }
     }
     &__menu {
@@ -57,7 +59,6 @@
 
     &__mobile {
       display: none;
-      position: relative;
 
       &-icon {
         display: block;
@@ -67,20 +68,23 @@
 
       &-menu {
         position: absolute;
-        right: -100px;
-        top: 50px;
+        display: block;
+        width: 100%;
         background-color: #fff;
-        width: 0px;
-        height: 100vh;
-        transition: all 0.3s ease-in;
-        overflow: hidden;
+        height: 0px;
+        transition: all 0.2s ease-in;
+        overflow-y: hidden;
+        top: 53px;
+        right: 0px;
         box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
         z-index: 3;
 
         list-style: none;
 
         &.active {
-          width: 350px;
+          width: 250px;
+          height: 100vh;
+          overflow-y: auto;
         }
 
         &-item {

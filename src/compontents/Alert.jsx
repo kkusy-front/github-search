@@ -12,7 +12,7 @@ const Alert = ({ status, text, handleClose }) => {
           </div>
           <p>{text}</p>
         </div>
-        <AiOutlineClose className='close' onClick={handleClose} />
+        {handleClose ? <AiOutlineClose className='close' onClick={handleClose} /> : null}
       </div>
     </>
   );
