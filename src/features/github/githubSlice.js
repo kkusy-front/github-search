@@ -55,6 +55,7 @@ export const githubSlice = createSlice({
       .addCase(getCommits.rejected, (state, action) => {
         state.commits.loading = false;
         state.commits.success = false;
+        state.commits.data = [];
         state.commits.error = action.payload;
       });
   },

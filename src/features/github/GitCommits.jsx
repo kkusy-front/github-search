@@ -39,7 +39,7 @@ const GitCommits = ({ title, user }) => {
         {open ? (
           loading ? (
             <ImSpinner className='loader' />
-          ) : (
+          ) : data ? (
             data.map((commit, index) => (
               <div className='github__repos-repo-commits-commit' key={index}>
                 <div className='github__repos-repo-commits-commit-title'>
@@ -52,6 +52,8 @@ const GitCommits = ({ title, user }) => {
                 </div>
               </div>
             ))
+          ) : (
+            <p>Brak</p>
           )
         ) : null}
       </div>
