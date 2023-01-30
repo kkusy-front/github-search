@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/github-search/static/css/main.3da26857.css",
-    "main.js": "/github-search/static/js/main.600248d0.js",
+    "main.js": "/github-search/static/js/main.363253db.js",
     "static/media/roboto-all-500-normal.woff": "/github-search/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/github-search/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
     "static/media/roboto-all-400-normal.woff": "/github-search/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
@@ -36,10 +36,10 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/github-search/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/github-search/index.html",
     "main.3da26857.css.map": "/github-search/static/css/main.3da26857.css.map",
-    "main.600248d0.js.map": "/github-search/static/js/main.600248d0.js.map"
+    "main.363253db.js.map": "/github-search/static/js/main.363253db.js.map"
   },
   "entrypoints": [
     "static/css/main.3da26857.css",
-    "static/js/main.600248d0.js"
+    "static/js/main.363253db.js"
   ]
 }
