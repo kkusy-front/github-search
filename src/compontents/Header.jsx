@@ -75,6 +75,7 @@ const Header = () => {
           <button
             aria-controls='main-menu'
             aria-expanded={showNavbar ? 'true' : 'false'}
+            aria-label={showNavbar ? 'Zamknij menu' : 'Otwórz menu'}
             type='button'
             className='main-nav__mobile-icon'
             onClick={handleShowNavbar}
